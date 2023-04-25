@@ -11,9 +11,14 @@ import (
 func main() {
 
 	var graphsFirstFile = dataLoading("s_1000_1.dat")
-	var amount = amountOfInterceptingGraphs(graphsFirstFile)
-
-	fmt.Print(amount)
+	var amount1 = amountOfInterceptingGraphs(graphsFirstFile)
+	fmt.Println("In the first data set the amount of crossing graphs is ", amount1)
+	var graphsSecondFile = dataLoading("s_10000_1.dat")
+	var amount2 = amountOfInterceptingGraphs(graphsSecondFile)
+	fmt.Println("In the second data set the amount of crossing graphs is ", amount2)
+	var graphsThirdFile = dataLoading("s_100000_1.dat")
+	var amount3 = amountOfInterceptingGraphs(graphsThirdFile)
+	fmt.Println("In the third data set the amount of crossing graphs is ", amount3)
 }
 
 func dataLoading(filename string) []Graph {
