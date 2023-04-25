@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="043e98e8-0302-4748-b276-863e674f3906" name="Changes" comment="returned real amount and not placeholder value">
+    <list default="true" id="043e98e8-0302-4748-b276-863e674f3906" name="Changes" comment="added amount calculation for all three data sets">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
     </list>
@@ -91,7 +91,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1682405485776</updated>
-      <workItem from="1682405486977" duration="3934000" />
+      <workItem from="1682405486977" duration="4879000" />
     </task>
     <task id="LOCAL-00001" summary="initial projekt set up">
       <created>1682405623968</created>
@@ -121,7 +121,14 @@
       <option name="project" value="LOCAL" />
       <updated>1682409561513</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="added amount calculation for all three data sets">
+      <created>1682409790743</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1682409790743</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -132,7 +139,8 @@
     <MESSAGE value="added struct Graph and loaded data from file into struct" />
     <MESSAGE value="added graph intercepting functions" />
     <MESSAGE value="returned real amount and not placeholder value" />
-    <option name="LAST_COMMIT_MESSAGE" value="returned real amount and not placeholder value" />
+    <MESSAGE value="added amount calculation for all three data sets" />
+    <option name="LAST_COMMIT_MESSAGE" value="added amount calculation for all three data sets" />
   </component>
   <component name="VgoProject">
     <settings-migrated>true</settings-migrated>

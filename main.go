@@ -6,19 +6,39 @@ import (
 	"os"
 	"strconv"
 	"strings"
+	"time"
 )
 
 func main() {
-
 	var graphsFirstFile = dataLoading("s_1000_1.dat")
+	start := time.Now()
+	// Call your function
 	var amount1 = amountOfInterceptingGraphs(graphsFirstFile)
+	// Get the time again and calculate the duration
+	duration := time.Since(start)
 	fmt.Println("In the first data set the amount of crossing graphs is ", amount1)
+	// Print the duration
+	fmt.Println("Time taken for first calculation:", duration)
+
 	var graphsSecondFile = dataLoading("s_10000_1.dat")
+	start2 := time.Now()
+	// Call your function
 	var amount2 = amountOfInterceptingGraphs(graphsSecondFile)
+	// Get the time again and calculate the duration
+	duration2 := time.Since(start2)
 	fmt.Println("In the second data set the amount of crossing graphs is ", amount2)
+	// Print the duration
+	fmt.Println("Time taken for first calculation:", duration2)
+
 	var graphsThirdFile = dataLoading("s_100000_1.dat")
+	start3 := time.Now()
+	// Call your function
 	var amount3 = amountOfInterceptingGraphs(graphsThirdFile)
+	// Get the time again and calculate the duration
+	duration3 := time.Since(start3)
 	fmt.Println("In the third data set the amount of crossing graphs is ", amount3)
+	// Print the duration
+	fmt.Println("Time taken for first calculation:", duration3)
 }
 
 func dataLoading(filename string) []Graph {
