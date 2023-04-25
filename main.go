@@ -68,7 +68,7 @@ func amountOfInterceptingGraphs(graphs []Graph) int {
 			}
 		}
 	}
-	return 0
+	return amount
 }
 
 func areIntercepting(graph1, graph2 Graph) bool {

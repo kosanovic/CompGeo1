@@ -4,8 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="043e98e8-0302-4748-b276-863e674f3906" name="Changes" comment="added struct Graph and loaded data from file into struct">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="043e98e8-0302-4748-b276-863e674f3906" name="Changes" comment="added graph intercepting functions">
       <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -13,27 +12,9 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FormatOnSaveOptions">
-    <option name="myRunOnSave" value="true" />
-    <option name="myAllFileTypesSelected" value="false" />
-    <option name="mySelectedFileTypes">
-      <set>
-        <option value="Go" />
-      </set>
-    </option>
-  </component>
   <component name="GOROOT" url="file:///opt/homebrew/Cellar/go/1.20.3/libexec" />
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
-  </component>
-  <component name="OptimizeOnSaveOptions">
-    <option name="myRunOnSave" value="true" />
-    <option name="myAllFileTypesSelected" value="false" />
-    <option name="mySelectedFileTypes">
-      <set>
-        <option value="Go" />
-      </set>
-    </option>
   </component>
   <component name="ProjectId" id="2OuLNy4RV92IEVh9xYMFjVuhIgt" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -109,7 +90,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1682405485776</updated>
-      <workItem from="1682405486977" duration="3281000" />
+      <workItem from="1682405486977" duration="3792000" />
     </task>
     <task id="LOCAL-00001" summary="initial projekt set up">
       <created>1682405623968</created>
@@ -125,7 +106,14 @@
       <option name="project" value="LOCAL" />
       <updated>1682406959326</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="added graph intercepting functions">
+      <created>1682408805208</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1682408805208</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -134,7 +122,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="initial projekt set up" />
     <MESSAGE value="added struct Graph and loaded data from file into struct" />
-    <option name="LAST_COMMIT_MESSAGE" value="added struct Graph and loaded data from file into struct" />
+    <MESSAGE value="added graph intercepting functions" />
+    <option name="LAST_COMMIT_MESSAGE" value="added graph intercepting functions" />
   </component>
   <component name="VgoProject">
     <settings-migrated>true</settings-migrated>
