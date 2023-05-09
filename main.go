@@ -28,7 +28,7 @@ func main() {
 	duration2 := time.Since(start2)
 	fmt.Println("In the second data set the amount of crossing graphs is ", amount2)
 	// Print the duration
-	fmt.Println("Time taken for first calculation:", duration2)
+	fmt.Println("Time taken for second calculation:", duration2)
 
 	var graphsThirdFile = dataLoading("s_100000_1.dat")
 	start3 := time.Now()
@@ -38,7 +38,7 @@ func main() {
 	duration3 := time.Since(start3)
 	fmt.Println("In the third data set the amount of crossing graphs is ", amount3)
 	// Print the duration
-	fmt.Println("Time taken for first calculation:", duration3)
+	fmt.Println("Time taken for third calculation:", duration3)
 }
 
 func dataLoading(filename string) []Graph {
