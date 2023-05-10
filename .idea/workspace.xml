@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="043e98e8-0302-4748-b276-863e674f3906" name="Changes" comment="update">
+    <list default="true" id="043e98e8-0302-4748-b276-863e674f3906" name="Changes" comment="add ccw and new type (point)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
     </list>
@@ -55,7 +55,7 @@
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Go Build.go build main.go">
     <configuration name="go build CompGeo1" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
       <module name="CompGeo1" />
       <working_directory value="$PROJECT_DIR$" />
@@ -65,8 +65,18 @@
       <filePath value="$PROJECT_DIR$/main.go" />
       <method v="2" />
     </configuration>
+    <configuration name="go build main.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="CompGeo1" />
+      <working_directory value="$PROJECT_DIR$" />
+      <kind value="FILE" />
+      <package value="CompGeo1" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$/main.go" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Go Build.go build main.go" />
         <item itemvalue="Go Build.go build CompGeo1" />
       </list>
     </recent_temporary>
@@ -148,7 +158,8 @@
     <MESSAGE value="returned real amount and not placeholder value" />
     <MESSAGE value="added amount calculation for all three data sets" />
     <MESSAGE value="update" />
-    <option name="LAST_COMMIT_MESSAGE" value="update" />
+    <MESSAGE value="add ccw and new type (point)" />
+    <option name="LAST_COMMIT_MESSAGE" value="add ccw and new type (point)" />
   </component>
   <component name="VgoProject">
     <settings-migrated>true</settings-migrated>
