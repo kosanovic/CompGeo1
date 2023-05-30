@@ -87,8 +87,6 @@ func amountOfInterceptingGraphs(graphs []Graph) int {
 	for i := 0; i < len(graphs); i++ {
 		for j := i; j < len(graphs); j++ {
 			if i != j {
-				//var isTrue = areIntercepting(graphs[i], graphs[j])
-				//var isTrue = areIntercepting(graphs[i], graphs[j]) || areTouching(graphs[i], graphs[j])
 				var isTrue = areIntercepting2(graphs[i], graphs[j])
 				if isTrue {
 					amount++
@@ -97,26 +95,6 @@ func amountOfInterceptingGraphs(graphs []Graph) int {
 		}
 	}
 	return amount
-}
-
-func areTouching(graph1 Graph, graph2 Graph) bool {
-	m1 := getGraphGradient(graph1)
-	m2 := getGraphGradient(graph2)
-
-	b1 := getB(m1, graph1.p1X, graph1.p1Y)
-	b2 := getB(m2, graph2.p1X, graph2.p1Y)
-
-	if m1 == m2 && b1 == b2 {
-		//fmt.Println(graph1, graph2)
-		return isDotInVector(graph1, graph2)
-	} else {
-		return false
-	}
-}
-
-func isDotInVector(graph1 Graph, graph2 Graph) bool {
-	// is graph1 erster punkt oder graph 2 zweiter punkt auf der strekce von graph 2 oder andersrum
-	return true
 }
 
 func areIntercepting2(graph1 Graph, graph2 Graph) bool {
@@ -172,30 +150,6 @@ func areIntercepting2(graph1 Graph, graph2 Graph) bool {
 			return false
 		}
 	}
-}
-
-func areIntercepting(graph1, graph2 Graph) bool {
-	m1 := getGraphGradient(graph1)
-	m2 := getGraphGradient(graph2)
-
-	b1 := getB(m1, graph1.p1X, graph1.p1Y)
-	b2 := getB(m2, graph2.p1X, graph2.p1Y)
-
-	x := (b2 - b1) / (m1 - m2)
-
-	if (x >= graph1.p1X && x <= graph1.p2X) && (x >= graph2.p1X && x <= graph2.p2X) {
-		return true
-	} else {
-		return false
-	}
-}
-
-func getGraphGradient(graph Graph) float64 {
-	return (graph.p2Y - graph.p1Y) / (graph.p2X - graph.p1X)
-}
-
-func getB(gradient, x, y float64) float64 {
-	return y - gradient*x
 }
 
 type Graph struct {
