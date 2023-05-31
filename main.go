@@ -20,26 +20,27 @@ func main() {
 	// Print the duration
 	fmt.Println("Time taken for first calculation:", duration)
 
-	var graphsSecondFile = dataLoading("s_10000_1.dat")
-	start2 := time.Now()
-	// Call your function
-	var amount2 = amountOfInterceptingGraphs(graphsSecondFile)
-	// Get the time again and calculate the duration
-	duration2 := time.Since(start2)
-	fmt.Println("In the second data set the amount of crossing graphs is ", amount2)
-	// Print the duration
-	fmt.Println("Time taken for second calculation:", duration2)
+	/*
+		var graphsSecondFile = dataLoading("s_10000_1.dat")
+		start2 := time.Now()
+		// Call your function
+		var amount2 = amountOfInterceptingGraphs(graphsSecondFile)
+		// Get the time again and calculate the duration
+		duration2 := time.Since(start2)
+		fmt.Println("In the second data set the amount of crossing graphs is ", amount2)
+		// Print the duration
+		fmt.Println("Time taken for second calculation:", duration2)
 
-	var graphsThirdFile = dataLoading("s_100000_1.dat")
-	start3 := time.Now()
-	// Call your function
-	var amount3 = amountOfInterceptingGraphs(graphsThirdFile)
-	// Get the time again and calculate the duration
-	duration3 := time.Since(start3)
-	fmt.Println("In the third data set the amount of crossing graphs is ", amount3)
-	// Print the duration
-	fmt.Println("Time taken for third calculation:", duration3)
-
+		var graphsThirdFile = dataLoading("s_100000_1.dat")
+		start3 := time.Now()
+		// Call your function
+		var amount3 = amountOfInterceptingGraphs(graphsThirdFile)
+		// Get the time again and calculate the duration
+		duration3 := time.Since(start3)
+		fmt.Println("In the third data set the amount of crossing graphs is ", amount3)
+		// Print the duration
+		fmt.Println("Time taken for third calculation:", duration3)
+	*/
 }
 
 func dataLoading(filename string) []Graph {
@@ -97,59 +98,87 @@ func amountOfInterceptingGraphs(graphs []Graph) int {
 	return amount
 }
 
-func areIntercepting2(graph1 Graph, graph2 Graph) bool {
-	// if ccw < 0 -> punkt liegt rechts von g1
-	// if ccw = 0 -> punkt liegt auf g1
-	// if ccw > 0 -> punkt liegt links von g1
-	// aus sicht von g1
+func areTouching(graph1 Graph, graph2 Graph) bool {
+	m1 := getGraphGradient(graph1)
+	m2 := getGraphGradient(graph2)
 
-	p := Point{graph1.p1X, graph1.p2X} // P (erster Punkt g1)
-	q := Point{graph1.p2X, graph1.p2Y}
-	r1 := Point{graph2.p1X, graph2.p1Y}
-	r2 := Point{graph2.p2X, graph2.p2Y}
+	b1 := getB(m1, graph1.p1X, graph1.p1Y)
+	b2 := getB(m2, graph2.p1X, graph2.p1Y)
 
-	ccw1 := p.X*q.Y + p.Y*r1.X + q.X*r1.Y - q.Y*r1.X - p.X*r1.Y - p.Y*q.X
-	ccw2 := p.X*q.Y + p.Y*r2.X + q.X*r2.Y - q.Y*r2.X - p.X*r2.Y - p.Y*q.X
-
-	if ccw1 < 0 {
-		// r1 liegt rechts
-		// liegt r2 recht, auf der strecke, oder links?
-		if ccw2 < 0 {
-			// r1 und r2 liegen rechts -> strecken schneiden sich nicht
-			return false
-		} else if ccw2 == 0 {
-			// r1 liegt rechts und r2 liegt auf der strecke -> sonderfall
-			return true
-		} else {
-			// r1 liegt rechts und r2 liegt links -> Schnittpunkt
-			return true
-		}
-	} else if ccw1 == 0 {
-		// r liegt auf der strecke
-		// liegt r2 recht, auf der strecke, oder links?
-		if ccw2 < 0 {
-			// r1 liegt auf der strecke und r2 liegt rechts -> sonderfall
-			return true
-		} else if ccw2 == 0 {
-			// r1 und r2 liegen auf der strecke -> sonderfall
-			return true
-		} else {
-			// r1 liegt auf Strecke r2 liegt links -> sonderfall
-			return true
-		}
+	if m1 == m2 && b1 == b2 {
+		//fmt.Println(graph1, graph2)
+		return isDotInVector(graph1, graph2)
 	} else {
-		// r liegt auf der linken Seite
-		if ccw2 < 0 {
-			// r1 liegt links, r2 liegt rechts -> Schnittpunkt
-			return true
-		} else if ccw2 == 0 {
-			// r1 liegt links, r2 liegt auf der Strecke -> sonderfall
-			return true
-		} else {
-			// r1 und r2 liegen links -> Kein Schnittpunkt
-			return false
+		return false
+	}
+}
+
+func isDotInVector(graph1 Graph, graph2 Graph) bool {
+	// is graph1 erster punkt oder graph 2 zweiter punkt auf der strekce von graph 2 oder andersrum
+	return true
+}
+
+func areIntercepting(graph1, graph2 Graph) bool {
+	m1 := getGraphGradient(graph1)
+	m2 := getGraphGradient(graph2)
+
+	b1 := getB(m1, graph1.p1X, graph1.p1Y)
+	b2 := getB(m2, graph2.p1X, graph2.p1Y)
+
+	x := (b2 - b1) / (m1 - m2)
+
+	if (x >= graph1.p1X && x <= graph1.p2X) && (x >= graph2.p1X && x <= graph2.p2X) {
+		return true
+	} else {
+		return false
+	}
+}
+
+func areIntercepting2(graph1 Graph, graph2 Graph) bool {
+	// Bestimme die Punkte P und Q von Graph 1
+	P := Point{graph1.p1X, graph1.p1Y}
+	Q := Point{graph1.p2X, graph1.p2Y}
+	// Bestimme die Punkte R1 und R2 von Graph 2
+	R := Point{graph2.p1X, graph2.p1Y}
+	S := Point{graph2.p2X, graph2.p2Y}
+
+	ccwPQR := ccw(P, Q, R)
+	ccwPQS := ccw(P, Q, S)
+	ccwRSP := ccw(R, S, P)
+	ccwRSQ := ccw(R, S, Q)
+
+	term1 := ccwPQR * ccwPQS
+	term2 := ccwRSP * ccwRSQ
+
+	if term1 <= 0 {
+		if term2 <= 0 {
+			if term1 < term2 {
+				return true
+			} else if ccwPQR == 0 && ccwPQS == 0 {
+				// TODO: Fehler: Graphen werden doppelt gezählt
+				fmt.Println("term1: ", term1)
+				fmt.Println("term2: ", term2)
+				fmt.Println("graph1: ", graph1)
+				fmt.Println("graph2: ", graph2)
+				fmt.Println()
+				return true
+			}
 		}
 	}
+	return false
+}
+
+func ccw(P Point, Q Point, R Point) float64 {
+	ccw := (P.X*Q.Y - P.Y*Q.X) + (Q.X*R.Y - Q.Y*R.X) + (R.X*P.Y - R.Y*P.X)
+	return ccw
+}
+
+func getGraphGradient(graph Graph) float64 {
+	return (graph.p2Y - graph.p1Y) / (graph.p2X - graph.p1X)
+}
+
+func getB(gradient, x, y float64) float64 {
+	return y - gradient*x
 }
 
 type Graph struct {
