@@ -10,6 +10,7 @@ import (
 )
 
 func main() {
+
 	var graphsFirstFile = dataLoading("s_1000_1.dat")
 	start := time.Now()
 	// Call your function
@@ -85,6 +86,9 @@ func dataLoading(filename string) []Graph {
 
 func amountOfInterceptingGraphs(graphs []Graph) int {
 	var amount int
+	//length := len(graphs)
+	//half := length / 2
+	//fmt.Println(len(graphs))
 	for i := 0; i < len(graphs); i++ {
 		for j := i; j < len(graphs); j++ {
 			if i != j {
@@ -97,7 +101,6 @@ func amountOfInterceptingGraphs(graphs []Graph) int {
 	}
 	return amount
 }
-
 func areTouching(graph1 Graph, graph2 Graph) bool {
 	m1 := getGraphGradient(graph1)
 	m2 := getGraphGradient(graph2)
@@ -155,7 +158,7 @@ func areIntercepting2(graph1 Graph, graph2 Graph) bool {
 			if term1 < term2 {
 				return true
 			} else if ccwPQR == 0 && ccwPQS == 0 {
-				// TODO: Fehler: Graphen werden doppelt gezählt
+				//TODO: Formel ausbessern, Graphen die nicht schneiden werden gezählt.
 				fmt.Println("term1: ", term1)
 				fmt.Println("term2: ", term2)
 				fmt.Println("graph1: ", graph1)
