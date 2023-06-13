@@ -20,7 +20,6 @@ func main() {
 	fmt.Println("In the first data set the amount of crossing graphs is ", amount1)
 	// Print the duration
 	fmt.Println("Time taken for first calculation:", duration)
-
 	/*
 		var graphsSecondFile = dataLoading("s_10000_1.dat")
 		start2 := time.Now()
@@ -86,13 +85,11 @@ func dataLoading(filename string) []Graph {
 
 func amountOfInterceptingGraphs(graphs []Graph) int {
 	var amount int
-	//length := len(graphs)
-	//half := length / 2
-	//fmt.Println(len(graphs))
 	for i := 0; i < len(graphs); i++ {
 		for j := i; j < len(graphs); j++ {
 			if i != j {
-				var isTrue = areIntercepting2(graphs[i], graphs[j])
+				var isTrue = areIntercepting(graphs[i], graphs[j]) || areTouching(graphs[i], graphs[j])
+				//var isTrue = areIntercepting2(graphs[i], graphs[j])
 				if isTrue {
 					amount++
 				}
@@ -110,7 +107,7 @@ func areTouching(graph1 Graph, graph2 Graph) bool {
 
 	if m1 == m2 && b1 == b2 {
 		//fmt.Println(graph1, graph2)
-		return isDotInVector(graph1, graph2)
+		return isDotInVector(graph1, graph2) //TODO: ??
 	} else {
 		return false
 	}
@@ -158,7 +155,6 @@ func areIntercepting2(graph1 Graph, graph2 Graph) bool {
 			if term1 < term2 {
 				return true
 			} else if ccwPQR == 0 && ccwPQS == 0 {
-				//TODO: Formel ausbessern, Graphen die nicht schneiden werden gezählt.
 				fmt.Println("term1: ", term1)
 				fmt.Println("term2: ", term2)
 				fmt.Println("graph1: ", graph1)
