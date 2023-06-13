@@ -20,27 +20,27 @@ func main() {
 	fmt.Println("In the first data set the amount of crossing graphs is ", amount1)
 	// Print the duration
 	fmt.Println("Time taken for first calculation:", duration)
-	/*
-		var graphsSecondFile = dataLoading("s_10000_1.dat")
-		start2 := time.Now()
-		// Call your function
-		var amount2 = amountOfInterceptingGraphs(graphsSecondFile)
-		// Get the time again and calculate the duration
-		duration2 := time.Since(start2)
-		fmt.Println("In the second data set the amount of crossing graphs is ", amount2)
-		// Print the duration
-		fmt.Println("Time taken for second calculation:", duration2)
 
-		var graphsThirdFile = dataLoading("s_100000_1.dat")
-		start3 := time.Now()
-		// Call your function
-		var amount3 = amountOfInterceptingGraphs(graphsThirdFile)
-		// Get the time again and calculate the duration
-		duration3 := time.Since(start3)
-		fmt.Println("In the third data set the amount of crossing graphs is ", amount3)
-		// Print the duration
-		fmt.Println("Time taken for third calculation:", duration3)
-	*/
+	var graphsSecondFile = dataLoading("s_10000_1.dat")
+	start2 := time.Now()
+	// Call your function
+	var amount2 = amountOfInterceptingGraphs(graphsSecondFile)
+	// Get the time again and calculate the duration
+	duration2 := time.Since(start2)
+	fmt.Println("In the second data set the amount of crossing graphs is ", amount2)
+	// Print the duration
+	fmt.Println("Time taken for second calculation:", duration2)
+
+	var graphsThirdFile = dataLoading("s_100000_1.dat")
+	start3 := time.Now()
+	// Call your function
+	var amount3 = amountOfInterceptingGraphs(graphsThirdFile)
+	// Get the time again and calculate the duration
+	duration3 := time.Since(start3)
+	fmt.Println("In the third data set the amount of crossing graphs is ", amount3)
+	// Print the duration
+	fmt.Println("Time taken for third calculation:", duration3)
+
 }
 
 func dataLoading(filename string) []Graph {
@@ -88,8 +88,8 @@ func amountOfInterceptingGraphs(graphs []Graph) int {
 	for i := 0; i < len(graphs); i++ {
 		for j := i; j < len(graphs); j++ {
 			if i != j {
-				var isTrue = areIntercepting(graphs[i], graphs[j]) || areTouching(graphs[i], graphs[j])
-				//var isTrue = areIntercepting2(graphs[i], graphs[j])
+				//var isTrue = areIntercepting(graphs[i], graphs[j]) || areTouching(graphs[i], graphs[j])
+				var isTrue = areIntercepting2(graphs[i], graphs[j])
 				if isTrue {
 					amount++
 				}
@@ -155,11 +155,13 @@ func areIntercepting2(graph1 Graph, graph2 Graph) bool {
 			if term1 < term2 {
 				return true
 			} else if ccwPQR == 0 && ccwPQS == 0 {
-				fmt.Println("term1: ", term1)
-				fmt.Println("term2: ", term2)
-				fmt.Println("graph1: ", graph1)
-				fmt.Println("graph2: ", graph2)
-				fmt.Println()
+				/*
+					fmt.Println("term1: ", term1)
+					fmt.Println("term2: ", term2)
+					fmt.Println("graph1: ", graph1)
+					fmt.Println("graph2: ", graph2)
+					fmt.Println()
+				*/
 				return true
 			}
 		}

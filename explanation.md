@@ -1,14 +1,32 @@
-Auswertung der Ergebnisse:
+## Auswertung der Ergebnisse:
 
-Im ersten Datensatz beträgt die Anzahl der sich kreuzenden Diagramme 6
-Zeitaufwand für die erste Berechnung: 5,649208 ms
+#### *Ziel der Aufgabe:*
+- Ermitteln Sie die Anzahl der sich schneidenden Stecken
+- Messen Sie die pro Datei aufgewendete Zeit
 
-Im zweiten Datensatz beträgt die Anzahl der sich kreuzenden Diagramme 254
-Zeitaufwand für die zweite Berechnung: 534,206792 ms
+#### *Ansatz:*
+Um die sich schneidenden Strecken, bzw. sich berührenden Strecken zu finden haben wir zwei Ansätze verfolgt.
+Im ersten Ansatz, welcher die Methode *areIntercepting* ist, haben wir einen manuellen Ansatz verfolgt.
+In der zweiten Methode *areIntercepting2*, haben wir einen Ansatz mit dem CCW verfolgt. Die genaue Beschreibung der
+Methode wird im Folgenden genauer erklärt.
 
-Im dritten Datensatz beträgt die Anzahl der sich kreuzenden Diagramme 25813
-Zeitaufwand für die dritte Berechnung: 52,301139334 s
+#### *1) Manueller Ansatz*
+**Beschreibung:** In dieser ...
+**Ergebnisse:**
+- Im ersten Datensatz beträgt die Anzahl der sich kreuzenden Strecken 6, mit einem Zeitaufwand von 6.096666 ms
+- Im zweiten Datensatz beträgt die Anzahl der sich kreuzenden Strecken 254, mit einem Zeitaufwand von 596.307333 ms
+- Im dritten Datensatz beträgt die Anzahl der sich kreuzenden Strecken 25813, mit einem Zeitaufwand von 59.278553042 s
 
+#### *2) Ansatz mit CCW*
+**Beschreibung:** In dieser ...
+**Ergebnisse:**
+- Im ersten Datensatz beträgt die Anzahl der sich kreuzenden Strecken 11, mit einem Zeitaufwand von 2.164875 ms
+- Im zweiten Datensatz beträgt die Anzahl der sich kreuzenden Strecken 374, mit einem Zeitaufwand von 211.145791 ms
+- Im dritten Datensatz beträgt die Anzahl der sich kreuzenden Strecken 38616, mit einem Zeitaufwand von 20.897704 s
+
+### Fazit
+- Unterschied der Laufzeiten erläutern
+- Unterschied der sich schneidenden Strecken erläutern
 
 Wir haben zwei Ansätze ausprobiert, um das Ergebnis zu finden, und sind zu dem Ergebnis gekommen
 dass manuell zu prüfen, ob sich zwei Graphen schneiden oder berühren die richtigen Ergebnisse liefern, 
