@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="043e98e8-0302-4748-b276-863e674f3906" name="Changes" comment="added md-file">
+    <list default="true" id="043e98e8-0302-4748-b276-863e674f3906" name="Changes" comment="edit md">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auswertung.md" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/explanation.md" beforeDir="false" afterPath="$PROJECT_DIR$/explanation.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -119,7 +117,7 @@
       <workItem from="1685648213200" duration="2168000" />
       <workItem from="1686032698815" duration="4464000" />
       <workItem from="1686639902049" duration="2880000" />
-      <workItem from="1686650786696" duration="4322000" />
+      <workItem from="1686650786696" duration="7025000" />
     </task>
     <task id="LOCAL-00001" summary="initial projekt set up">
       <created>1682405623968</created>
@@ -184,7 +182,14 @@
       <option name="project" value="LOCAL" />
       <updated>1686643462082</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="edit md">
+      <created>1686666098589</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1686666098589</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -211,7 +216,8 @@
     <MESSAGE value="updated ccw and added first method again" />
     <MESSAGE value="update" />
     <MESSAGE value="added md-file" />
-    <option name="LAST_COMMIT_MESSAGE" value="added md-file" />
+    <MESSAGE value="edit md" />
+    <option name="LAST_COMMIT_MESSAGE" value="edit md" />
   </component>
   <component name="VgoProject">
     <settings-migrated>true</settings-migrated>
