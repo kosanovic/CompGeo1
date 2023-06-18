@@ -10,7 +10,7 @@ import (
 )
 
 func main() {
-
+	// Richtige Werte : 11, 732, 77126
 	var graphsFirstFile = dataLoading("s_1000_1.dat")
 	start := time.Now()
 	// Call your function
@@ -88,7 +88,6 @@ func amountOfInterceptingGraphs(graphs []Graph) int {
 	for i := 0; i < len(graphs); i++ {
 		for j := i; j < len(graphs); j++ {
 			if i != j {
-				//var isTrue = areIntercepting(graphs[i], graphs[j]) || areTouching(graphs[i], graphs[j])
 				var isTrue = areIntercepting2(graphs[i], graphs[j])
 				if isTrue {
 					amount++
@@ -98,88 +97,33 @@ func amountOfInterceptingGraphs(graphs []Graph) int {
 	}
 	return amount
 }
-func areTouching(graph1 Graph, graph2 Graph) bool {
-	m1 := getGraphGradient(graph1)
-	m2 := getGraphGradient(graph2)
-
-	b1 := getB(m1, graph1.p1X, graph1.p1Y)
-	b2 := getB(m2, graph2.p1X, graph2.p1Y)
-
-	if m1 == m2 && b1 == b2 {
-		//fmt.Println(graph1, graph2)
-		return isDotInVector(graph1, graph2) //TODO: ??
-	} else {
-		return false
-	}
-}
-
-func isDotInVector(graph1 Graph, graph2 Graph) bool {
-	// is graph1 erster punkt oder graph 2 zweiter punkt auf der strekce von graph 2 oder andersrum
-	return true
-}
-
-func areIntercepting(graph1, graph2 Graph) bool {
-	m1 := getGraphGradient(graph1)
-	m2 := getGraphGradient(graph2)
-
-	b1 := getB(m1, graph1.p1X, graph1.p1Y)
-	b2 := getB(m2, graph2.p1X, graph2.p1Y)
-
-	x := (b2 - b1) / (m1 - m2)
-
-	if (x >= graph1.p1X && x <= graph1.p2X) && (x >= graph2.p1X && x <= graph2.p2X) {
-		return true
-	} else {
-		return false
-	}
-}
 
 func areIntercepting2(graph1 Graph, graph2 Graph) bool {
 	// Bestimme die Punkte P und Q von Graph 1
-	P := Point{graph1.p1X, graph1.p1Y}
-	Q := Point{graph1.p2X, graph1.p2Y}
+	p1 := Point{graph1.p1X, graph1.p1Y}
+	p2 := Point{graph1.p2X, graph1.p2Y}
 	// Bestimme die Punkte R1 und R2 von Graph 2
-	R := Point{graph2.p1X, graph2.p1Y}
-	S := Point{graph2.p2X, graph2.p2Y}
+	q1 := Point{graph2.p1X, graph2.p1Y}
+	q2 := Point{graph2.p2X, graph2.p2Y}
 
-	ccwPQR := ccw(P, Q, R)
-	ccwPQS := ccw(P, Q, S)
-	ccwRSP := ccw(R, S, P)
-	ccwRSQ := ccw(R, S, Q)
-
-	term1 := ccwPQR * ccwPQS
-	term2 := ccwRSP * ccwRSQ
-
-	if term1 <= 0 {
-		if term2 <= 0 {
-			if term1 < term2 {
-				return true
-			} else if ccwPQR == 0 && ccwPQS == 0 {
-				/*
-					fmt.Println("term1: ", term1)
-					fmt.Println("term2: ", term2)
-					fmt.Println("graph1: ", graph1)
-					fmt.Println("graph2: ", graph2)
-					fmt.Println()
-				*/
-				return true
-			}
-		}
+	if newccw(p1, p2, q1) == 0 && newccw(p1, p2, q2) == 0 {
+		return isPointOnLine(p1, p2, q1) || isPointOnLine(p1, p2, q2)
+	} else if newccw(p1, p2, q1)*newccw(p1, p2, q2) <= 0 && newccw(q1, q2, p1)*newccw(q1, q2, p2) <= 0 {
+		return true
 	}
 	return false
 }
 
-func ccw(P Point, Q Point, R Point) float64 {
-	ccw := (P.X*Q.Y - P.Y*Q.X) + (Q.X*R.Y - Q.Y*R.X) + (R.X*P.Y - R.Y*P.X)
-	return ccw
-}
+func isPointOnLine(p1, p2, q Point) bool {
+	// Überprüfung, ob q auf der Strecke p1-p2 liegt
+	if (q.X >= p1.X && q.X <= p2.X) || (q.X >= p2.X && q.X <= p1.X) {
+		return true
+	}
 
-func getGraphGradient(graph Graph) float64 {
-	return (graph.p2Y - graph.p1Y) / (graph.p2X - graph.p1X)
+	return false
 }
-
-func getB(gradient, x, y float64) float64 {
-	return y - gradient*x
+func newccw(p1, p2, p3 Point) float64 {
+	return (p2.Y-p1.Y)*(p3.X-p2.X) - (p2.X-p1.X)*(p3.Y-p2.Y)
 }
 
 type Graph struct {
