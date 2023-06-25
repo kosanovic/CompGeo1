@@ -88,7 +88,7 @@ func amountOfInterceptingGraphs(graphs []Graph) int {
 	for i := 0; i < len(graphs); i++ {
 		for j := i; j < len(graphs); j++ {
 			if i != j {
-				var isTrue = areIntercepting2(graphs[i], graphs[j])
+				var isTrue = areIntercepting(graphs[i], graphs[j])
 				if isTrue {
 					amount++
 				}
@@ -98,7 +98,7 @@ func amountOfInterceptingGraphs(graphs []Graph) int {
 	return amount
 }
 
-func areIntercepting2(graph1 Graph, graph2 Graph) bool {
+func areIntercepting(graph1 Graph, graph2 Graph) bool {
 	// Bestimme die Punkte P und Q von Graph 1
 	p1 := Point{graph1.p1X, graph1.p1Y}
 	p2 := Point{graph1.p2X, graph1.p2Y}
@@ -106,9 +106,9 @@ func areIntercepting2(graph1 Graph, graph2 Graph) bool {
 	q1 := Point{graph2.p1X, graph2.p1Y}
 	q2 := Point{graph2.p2X, graph2.p2Y}
 
-	if newccw(p1, p2, q1) == 0 && newccw(p1, p2, q2) == 0 {
+	if ccw(p1, p2, q1) == 0 && ccw(p1, p2, q2) == 0 {
 		return isPointOnLine(p1, p2, q1) || isPointOnLine(p1, p2, q2)
-	} else if newccw(p1, p2, q1)*newccw(p1, p2, q2) <= 0 && newccw(q1, q2, p1)*newccw(q1, q2, p2) <= 0 {
+	} else if ccw(p1, p2, q1)*ccw(p1, p2, q2) <= 0 && ccw(q1, q2, p1)*ccw(q1, q2, p2) <= 0 {
 		return true
 	}
 	return false
@@ -122,7 +122,7 @@ func isPointOnLine(p1, p2, q Point) bool {
 
 	return false
 }
-func newccw(p1, p2, p3 Point) float64 {
+func ccw(p1, p2, p3 Point) float64 {
 	return (p2.Y-p1.Y)*(p3.X-p2.X) - (p2.X-p1.X)*(p3.Y-p2.Y)
 }
 
