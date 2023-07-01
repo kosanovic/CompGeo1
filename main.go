@@ -119,7 +119,6 @@ func isPointOnLine(p1, p2, q Point) bool {
 	if (q.X >= p1.X && q.X <= p2.X) || (q.X >= p2.X && q.X <= p1.X) {
 		return true
 	}
-
 	return false
 }
 func ccw(p1, p2, p3 Point) float64 {
