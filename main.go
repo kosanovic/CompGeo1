@@ -10,7 +10,6 @@ import (
 )
 
 func main() {
-	// Richtige Werte : 11, 732, 77126
 	var graphsFirstFile = dataLoading("s_1000_1.dat")
 	start := time.Now()
 	// Call your function
