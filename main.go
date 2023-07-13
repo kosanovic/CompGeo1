@@ -108,7 +108,9 @@ func areIntercepting(graph1 Graph, graph2 Graph) bool {
 	if ccw(p1, p2, q1) == 0 && ccw(p1, p2, q2) == 0 {
 		return isPointOnLine(p1, p2, q1) || isPointOnLine(p1, p2, q2)
 	} else if ccw(p1, p2, q1)*ccw(p1, p2, q2) <= 0 && ccw(q1, q2, p1)*ccw(q1, q2, p2) <= 0 {
-		return true
+		// check if the graphs are really touching and are not two graphs on the same infinite line
+		// either it would return true for example for the graphs (0 0 0.1 0.1) and (10 10 10.1 10.1)
+		return isPointOnLine(p1, p2, q1) || isPointOnLine(p1, p2, q2)
 	}
 	return false
 }

@@ -26,7 +26,9 @@ Sind die Graphen kollinear, wird `ccw` erneut aufgerufen, um die Orientierung vo
 (bzw. p1, p2, q2) zu bestimmen. Wenn die beiden Orientierungen unterschiedliche Vorzeichen haben 
 und die Orientierung von q1, q2 und p1 sowie die Orientierung von q1, q2 und p2 ebenfalls 
 unterschiedliche Vorzeichen haben, dann schneiden sich die Graphen. In diesem Fall wird erneut 
-ein `true` zurückgegeben. Wenn keins der obigen Bedingungen erfüllt ist, wird ein `false` 
+ein `true` zurückgegeben, sofern `isPointOnLine` in einem der beiden Fälle `true` zurückgibt. 
+Wenn nicht zusätzlich mit `isPointOnLine` geprüft wird, werden Strecken die sich nicht berühren,
+aber auf der selben unendlichen Gerade liegen als Schnittpunkt gezählt. Wenn keins der obigen Bedingungen erfüllt ist, wird ein `false` 
 zurückgegeben, da sich die Strecken nicht schneiden bzw. überlappen.
 
 Die Hilfsfunktion `isPointOnLine` überprüft, ob ein Punkt q auf einer Linie liegt. Hierfür 
@@ -42,8 +44,8 @@ In der Hilfsfunktion `ccw` wird die Orientierung der drei Punkte p1, p2 und p3 m
 Unsere Ergebnisse für alle drei Datensätze sind in der folgenden Tabelle dargestellt:
 
 | Datensatz | Streckenanzahl | Schnittpunkte | Zeitaufwand |
-|-----------|----------------|------------|-------------|
-| 1         | 1001           | 11         | 1.643 ms    |
-| 2         | 10001       | 733        | 173.304 ms  |
-| 3         | 100001       | 77138     | 16.476 s    |
+|-----------|----------------|---------------|-------------|
+| 1         | 1001           | 7             | 1.235625ms    |
+| 2         | 10001       | 527           | 121.831292ms  |
+| 3         | 100001       | 56482         | 12.044025042s    |
 
